@@ -1,0 +1,36 @@
+
+* {
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+}
+
+body {
+    padding-left: 50px;
+    color: #959595;
+}
+
+
+li {
+    width: 100%;
+}
+
+.navbar {
+    border: none;
+}
+
+.col-md-1 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#twitterOn,#twitterOff {
+    background-color: white;
+    width: 100%;
+
+}
+
+#tlogo {
+    margin: auto;
+    padding-left: 5px;
+
+}
