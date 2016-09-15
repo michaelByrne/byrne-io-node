@@ -67,7 +67,7 @@
     <% for(var i = 0;i < stories.length;i++){ %>
     <div class="col-md-3 story">
         <div class="story-content">
-            <img class="crop" src=<%="images/uploads/" + stories[i].filename%>>
+            <a href="<%=stories[i].url%>" target="_blank"><img class="crop story-lead" src=<%="images/uploads/" + stories[i].filename%>></a>
             <h6 style="color: #58889D"><%= stories[i].tag %></h6>
             <div class="story-title"><a href="<%=stories[i].url%>" target="_blank" style="color: darkgray"><h4><%= stories[i].title %></h4></a></div>
             <div class="blurb"><%=stories[i].blurb%></div>
