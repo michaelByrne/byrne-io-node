@@ -4,25 +4,41 @@
 
 
 var express = require('express');
-
+var bodyParser = require('body-parser');
 
 var app = express();
-var port = process.env.PORT;
+var port = process.env.PORT || 5000;
+
+//middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded(
+    {extended: true}));
 
 var nav = [{
     Link: '/', Text: '/'
-}, {
+    }, {
     Link: '/writing', Text: '/writing'
-}, {
+    }, {
     Link: '/photo', Text: '/photo'
-}, {
-    Link: '/code', Text: '/code'
-}
+    }, {
+    Link: '/code', Text: '/projects'
+    }
 ];
+
+var storyRouter = require('./src/routes/storyRoutes')(nav);
+var adminRouter = require('./src/routes/adminRoutes')(nav);
+
+
 
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(express.static('uploads'));
+
+
+app.use('/writing', storyRouter);
+app.use('/admin',adminRouter);
+
 var server = app.listen(port, function(err){
     var host = server.address().address;
     console.log("You are serving at " + host + " on port " + port);

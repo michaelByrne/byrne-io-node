@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- Template by Quackit.com -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Byrneco. Co. Industries</title>
+
+
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- bower:js -->
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/custom.css">
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="/js/holder.min.js"></script>
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/js/jqfunctions.js"></script>
+    <!-- endinject -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+    <div class="row"><br>
+        <%if (stories.length > 0) { %>
+        <% for(var i = 0;i < 3;i++){ %>
+        <div class="col-md-4 col-sm-3">
+            <p>title: <%=stories[i].title%><br>
+            tag: <%=stories[i].tag%> <br>
+            blurb: <%=stories[i].blurb%><br>
+            link: <%=stories[i].url%> <br>
+            image: y/n</p>
+        </div>
+        <% } %>
+        <% } %>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-3">
+            <h4>Add story</h4>
+            <form id="addStory"
+                  action="/admin/addStory"
+                  method="post"
+                  enctype="multipart/form-data">
+                <input name="title" id="title">title<br>
+                <input name="tag" id="tag">tag<br>
+                <input name="url" id="url">url<br>
+                <textarea form="addStory" class="form-control" rows="3" cols="8" class="blurb" name="blurb">blurb</textarea><br>
+                <input type="file" name="displayImage"><br>
+                <input type="submit" value="Add">
+                <input type="button" value="Reset Form" onClick="this.form.reset()" />
+            </form>
+        </div>
+    </div>
+    <br>
+
+</body>
