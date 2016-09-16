@@ -40,9 +40,7 @@ gulp.task('serve',['inject'], function(){
     var options = {
         script: 'app.js',
         delayTime: 1,
-        env: {
-            'PORT': 5000
-        },
+        
         watch: jsFiles
     };
     return nodemon(options).
