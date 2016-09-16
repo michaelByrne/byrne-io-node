@@ -11,56 +11,23 @@ var mult = require('multer');
 var upload = mult({ dest: 'public/images/uploads'});
 
 
-
-var router = function(nav){
-
-    adminRouter.route('/addStory')
-        .post(upload.single('displayImage'),function (req,res,next) {
-            var newStory = req.body;
-            var image = req.file;
-            console.log(image);
-            console.log(newStory);
-            var url = 'mongodb://admin:123@ds147975.mlab.com:47975/byrneio';
-            mongodb.connect(url,function(err,db) {
-                var collection = db.collection('writing');
-                if (collection){
-                    if (image) {
-                       newStory.filename = image.filename;
-                    }
-                    else{
-                        newStory.filename = null;
-                    }
-                    collection.insert(newStory, function (err, results) {
-                        console.log("added ..." + JSON.stringify(newStory));
-                        res.redirect('/admin')
-                    });
-                }
-            });
-            
-        });
+var router = function (nav) {
+    var adminController = require('../controllers/adminController')(null,nav);
+    adminRouter.use(adminController.middleware);
     adminRouter.route('/')
-        .get(function (req,res){
-            var url = 'mongodb://admin:123@ds147975.mlab.com:47975/byrneio';
-            mongodb.connect(url,function(err,db) {
-                var collection = db.collection('writing');
-                if (collection){
-                    collection.find({}).toArray(function(err,results){
-                        res.render('admin',{
-                            stories: results
-                        });
-                    });
-                }
-                else{
-                    res.render('admin',{
-                        newEntry: null
-                    });
-                }
-            });
-        });
+        .get(adminController.getDash);
 
+    adminRouter.use(adminController.middleware);
+    adminRouter.route('/addStory')
+         .post(upload.single('displayImage'),adminController.addStory);
     
+    adminRouter.route('/editStory')
+        .post(adminController.editStory);
+    
+    adminRouter.route('/deleteStory')
+        .post(adminController.deleteStory);
+
     return adminRouter;
 };
-
 
 module.exports = router;

@@ -15,7 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "x-editable": "^1.5.1"
   },
   "overrides": {
     "bootstrap": {
@@ -23,6 +24,12 @@
         "dist/js/bootstrap.js",
         "dist/css/bootstrap.css",
         "less/bootstrap.less"
+      ]
+    },
+    "x-editable": {
+      "main": [
+        "dist/bootstrap-editable/js/bootstrap-editable.js",
+        "dist/bootstrap-editable/css/bootstrap-editable.css"
       ]
     }
   }

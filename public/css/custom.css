@@ -18,6 +18,10 @@ li {
     color: black;
 }
 
+#push {
+    min-height: 200px;
+}
+
 
 .crop {
     height: 200px;
@@ -30,6 +34,8 @@ li {
 .navbar {
     border: none;
 }
+
+.editable-click { border-bottom: none; }
 
 .not-active {
     pointer-events: none;
@@ -70,3 +76,9 @@ li {
     padding-top: 10px;
 }
 
+.dash-panel {
+    border: #000000;
+    background-color: #afd9ee;
+    margin: 5px;
+    padding: 5px;
+}

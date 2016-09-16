@@ -14,10 +14,12 @@
     <link href="css/custom.css" rel="stylesheet">
     <!-- bower:css -->
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/x-editable/dist/bootstrap-editable/css/bootstrap-editable.css" />
     <!-- endbower -->
     <!-- bower:js -->
     <script src="/lib/jquery/dist/jquery.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/lib/x-editable/dist/bootstrap-editable/js/bootstrap-editable.js"></script>
     <!-- endbower -->
     <!-- inject:css -->
     <link rel="stylesheet" href="/css/custom.css">
@@ -38,19 +40,44 @@
 
 
 <body>
+    <script>$.fn.editable.defaults.mode = 'inline';</script>
     <div class="row"><br>
+        <h3>about_you cms v 0.1</h3>
         <%if (stories.length > 0) { %>
-        <% for(var i = 0;i < 3;i++){ %>
-        <div class="col-md-4 col-sm-3">
-            <p>title: <%=stories[i].title%><br>
-            tag: <%=stories[i].tag%> <br>
-            blurb: <%=stories[i].blurb%><br>
-            link: <%=stories[i].url%> <br>
-            image: y/n</p>
+        <% for(var i = 0;i < stories.length;i++){ %>
+        <div class="col-md-3 col-sm-3 dash-panel" draggable="true">
+            <p>title: <span id="titles<%=i%>" data-type="text" data-pk="<%=stories[i]._id%>" data-url="/admin/editStory" data-name="title"><%=stories[i].title%></span><br>
+            tag: <span id="tags<%=i%>" data-type="text" data-pk="<%=stories[i]._id%>" data-url="/admin/editStory" data-name="tag"><%=stories[i].tag%></span><br>
+            blurb: <span id="blurbs<%=i%>" data-type="textarea" data-pk="<%=stories[i]._id%>" data-url="/admin/editStory" data-name="blurb"><%=stories[i].blurb%></span><br>
+            url: <span id="links<%=i%>" data-type="text" data-pk="<%=stories[i]._id%>" data-url="/admin/editStory" data-name="url"><a href="#"><%=stories[i].url%></a></span><br>
+                position: <span id="positions<%=i%>" data-type="number" data-pk="<%=stories[i]._id%>" data-url="/admin/editStory" data-name="position"><%=stories[i].position%></span><br>
+                id: <%=stories[i]._id%><br></p>
+            <form action="/admin/deleteStory" method="post">
+                <button name="delete" value="<%=stories[i]._id%>" class="glyphicon glyphicon-remove-circle" style="color: red"></button>
+            </form>
+            <script>$(document).ready(function() {
+                    $('#blurbs<%=i%>').editable({
+                        showbuttons: false
+                    });
+                    $('#titles<%=i%>').editable({
+                        showbuttons: false
+                    });
+                    $('#tags<%=i%>').editable({
+                        showbuttons: false
+                    });
+                    $('#links<%=i%>').editable({
+                        showbuttons: false
+                    });
+                    $('#positions<%=i%>').editable({
+                        showbuttons: false
+                    });
+                });</script>
+
         </div>
         <% } %>
         <% } %>
     </div>
+
     <div class="row">
         <div class="col-md-4 col-sm-3">
             <h4>Add story</h4>
@@ -61,9 +88,11 @@
                 <input name="title" id="title">title<br>
                 <input name="tag" id="tag">tag<br>
                 <input name="url" id="url">url<br>
+                <input type="number" name="position" id="position">position<br>
                 <textarea form="addStory" class="form-control" rows="3" cols="8" class="blurb" name="blurb">blurb</textarea><br>
                 <input type="file" name="displayImage"><br>
                 <input type="submit" value="Add">
+
                 <input type="button" value="Reset Form" onClick="this.form.reset()" />
             </form>
         </div>

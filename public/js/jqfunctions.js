@@ -3,8 +3,4 @@
  */
 
 
-$( "#twitter" ).hover(function() {
-    $( "#twitter" ).hide( "slow", function() {
-        alert( "Animation complete." );
-    });
-});
+

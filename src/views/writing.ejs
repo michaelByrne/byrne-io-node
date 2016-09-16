@@ -14,10 +14,12 @@
     <link href="css/custom.css" rel="stylesheet">
     <!-- bower:css -->
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/x-editable/dist/bootstrap-editable/css/bootstrap-editable.css" />
     <!-- endbower -->
     <!-- bower:js -->
     <script src="/lib/jquery/dist/jquery.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/lib/x-editable/dist/bootstrap-editable/js/bootstrap-editable.js"></script>
     <!-- endbower -->
     <!-- inject:css -->
     <link rel="stylesheet" href="/css/custom.css">
@@ -67,7 +69,7 @@
     <% for(var i = 0;i < stories.length;i++){ %>
     <div class="col-md-3 story">
         <div class="story-content">
-            <a href="<%=stories[i].url%>" target="_blank"><img class="crop story-lead" src=<%="images/uploads/" + stories[i].filename%>></a>
+            <a href="<%=stories[i].url%>" target="_blank"><img class="crop story-lead" src=<%="../images/uploads/" + stories[i].img%>></a>
             <h6 style="color: #58889D"><%= stories[i].tag %></h6>
             <div class="story-title"><a href="<%=stories[i].url%>" target="_blank" style="color: darkgray"><h4><%= stories[i].title %></h4></a></div>
             <div class="blurb"><%=stories[i].blurb%></div>
@@ -78,6 +80,12 @@
 </div>
 
 
-<!--TODO: basic footer-->
+<div id="push"></div>
+
+<div id="footer">
+    <div class="container" style="text-align: center">
+        <p class="muted credit">powered by about_you cms v 0.1 okokokok copyright 2016 mbyrne</p>
+    </div>
+</div>
 
 </body>
