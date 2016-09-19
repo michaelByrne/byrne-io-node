@@ -52,13 +52,14 @@
 </script>
 
 <script>
-        $(document).ready(function () {
-            $('#tlogo').hover(function () {
-                this.src = '/images/twitterover.png';
-            }, function () {
-                this.src = '/images/twitter.png';
-            });
+    $(document).ready(function () {
+        $('#tlogo').hover(function () {
+            this.src = '/images/twitterover.png';
+        }, function () {
+            this.src = '/images/twitter.png';
         });
+
+    });
 </script>
 
 <div class="container">
@@ -67,20 +68,25 @@
 <div class="row">
     <div class="navbar navbar-default col-md-1">
         <ul class="nav nav-stacked navbar-nav">
-            <li class="active"><a href="<%= nav[0].Link %>"><%= nav[0].Text %></a></li>
+            <li class="active" id="front"><a href="<%= nav[0].Link %>"><%= nav[0].Text %></a></li>
             <li><a href="<%= nav[1].Link %>"><%= nav[1].Text %></a></li>
-            <li class="not-active"><a href="<%= nav[2].Link %>"><%= nav[2].Text %></a></li>
+            <li><a href="<%= nav[2].Link %>"><%= nav[2].Text %></a></li>
             <li class="not-active"><a href="<%= nav[3].Link %>"><%= nav[3].Text %></a></li>
             <li id="twitterOff"><a href="#"><img id="tlogo" width="50" src="/images/twitter.png"/></a></li>
         </ul>
     </div>
-    <div class="col-md-5">
-        <img src="/images/field.jpg" class="img-responsive">
+    <div id="home">
+        <div class="col-md-5">
+            <img src="/images/field.jpg" class="img-responsive">
+        </div>
+        <div class="col-md-5">
+            <img src="/images/flowers.jpg" class="img-responsive">
+        </div>
     </div>
-    <div class="col-md-5">
-        <img src="/images/flowers.jpg" class="img-responsive">
-    </div>
+
+
 </div>
+
 <div id="push"></div>
 
 <div id="footer">

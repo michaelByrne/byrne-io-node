@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- by michael byrne okokokokokok -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Byrneco. Co. Industries</title>
+
+    <!-- Injections from Gulp, Bower -->
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/x-editable/dist/bootstrap-editable/css/bootstrap-editable.css" />
+    <!-- endbower -->
+    <!-- bower:js -->
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/lib/x-editable/dist/bootstrap-editable/js/bootstrap-editable.js"></script>
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/custom.css">
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="/js/holder.min.js"></script>
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/js/jqfunctions.js"></script>
+    <!-- endinject -->
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+
+<!-- Ugh, get this garbage out of here!-->
+<script>
+    $(document).ready(function () {
+        $('#tlogo').hover(function () {
+            this.src = '/images/twitterover.png';
+        }, function () {
+            this.src = '/images/twitter.png';
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#tlogo').hover(function () {
+            this.src = '/images/twitterover.png';
+        }, function () {
+            this.src = '/images/twitter.png';
+        });
+
+    });
+</script>
+
+<div class="container">
+    <div class="page-header"><h2>Michael Byrne</h2></div>
+</div>
+<div class="row">
+    <div class="navbar navbar-default col-md-1">
+        <ul class="nav nav-stacked navbar-nav">
+            <li id="front"><a href="<%= nav[0].Link %>"><%= nav[0].Text %></a></li>
+            <li><a href="<%= nav[1].Link %>"><%= nav[1].Text %></a></li>
+            <li class="active"><a href="<%= nav[2].Link %>"><%= nav[2].Text %></a></li>
+            <li class="not-active"><a href="<%= nav[3].Link %>"><%= nav[3].Text %></a></li>
+            <li id="twitterOff"><a href="#"><img id="tlogo" width="50" src="/images/twitter.png"/></a></li>
+        </ul>
+    </div>
+    <div class="col-md-1" style="width: 30px">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="margin-left: 5px">
+            <div class="btn-group-vertical" role="group" aria-label="First group" id="btns">
+                <% for(var i = 1;i <= images.length;i++){ %>
+                <button type="button" class="btn btn-secondary" id="img-btn-<%=i-1%>"><%=i%></button>
+                <script>
+                    $('#img-btn-0').addClass('active');
+                    $('#img-btn-1').addClass('active');
+                    $('#btns').on('click','#img-btn-<%=i-1%>',function(){
+                        $("#img-1").attr('src', '<%= images[i - 1].url %>');
+                        <%=images[i-1].active=true%>
+                        $("#img-btn-<%= i-1 %>").addClass('active');
+                    });
+                </script>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <img src="<%=images[0].url%>" class="img-responsive img-one" id="img-<%=1%>">
+    </div>
+    <div class="col-md-5">
+        <img src="<%=images[1].url%>" class="img-responsive img-two" id="img-<%=2%>">
+    </div>
+
+
+
+
+</div>
+
+<div id="push"></div>
+
+<div id="footer">
+    <div class="container" style="text-align: center">
+        <p class="muted credit">powered by about_you cms v 0.1 okokokok copyright 2016 mbyrne</p>
+    </div>
+</div>
+</body>

@@ -1,6 +1,11 @@
 /**
  * Created by michaelbyrne on 9/15/16.
+ * About_You core module
+ * TODO: JSDocs
  */
+
+
+
 
 var mongodb = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
@@ -79,7 +84,7 @@ var adminController = function (adminService, nav) {
         Story.findByIdAndRemove(req.body.delete, function(err) {
             if (err) throw err;
 
-            // we have deleted the user
+            // we have deleted the story
             console.log("deleted " + req.body.delete);
             res.redirect('/admin');
         });

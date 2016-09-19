@@ -7,7 +7,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var app = express();
-var port = process.env.PORT;
+var port = process.env.PORT || 5000;
 
 //middleware
 app.use(bodyParser.json());
@@ -19,7 +19,7 @@ var nav = [{
     }, {
     Link: '/writing', Text: '/writing'
     }, {
-    Link: '/photo', Text: '/photo'
+    Link: '/photos', Text: '/photo'
     }, {
     Link: '/code', Text: '/projects'
     }
@@ -27,7 +27,7 @@ var nav = [{
 
 var storyRouter = require('./src/routes/storyRoutes')(nav);
 var adminRouter = require('./src/routes/adminRoutes')(nav);
-
+var photoRouter = require('./src/routes/photoRoutes')(nav);
 
 
 app.set('views', './src/views');
@@ -38,6 +38,7 @@ app.use(express.static('uploads'));
 
 app.use('/writing', storyRouter);
 app.use('/admin',adminRouter);
+app.use('/photos',photoRouter);
 
 var server = app.listen(port, function(err){
     var host = server.address().address;
