@@ -27,7 +27,7 @@ var photoController = function (photoService, nav) {
             }
             flickr.photosets.getPhotos({
                 user_id: "8298209@N02",
-                photoset_id: '72157673523985406',
+                photoset_id: '72157629977426174',
                 page: 1,
                 per_page: 10
             }, function(err, result) {

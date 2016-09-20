@@ -76,17 +76,17 @@
         </ul>
     </div>
     <div class="col-md-1" style="width: 30px">
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="margin-left: 5px">
-            <div class="btn-group-vertical" role="group" aria-label="First group" id="btns">
+        <div class="btn-toolbar" role="toolbar" style="margin-left: 5px">
+            <div class="btn-group-vertical" role="group"  id="btns" data-toggle="buttons">
                 <% for(var i = 1;i <= images.length;i++){ %>
-                <button type="button" class="btn btn-secondary" id="img-btn-<%=i-1%>"><%=i%></button>
+                <button type="radio" class="btn btn-secondary" id="img-btn-<%=i-1%>"><%=i%></button>
                 <script>
-                    $('#img-btn-0').addClass('active');
-                    $('#img-btn-1').addClass('active');
-                    $('#btns').on('click','#img-btn-<%=i-1%>',function(){
-                        $("#img-1").attr('src', '<%= images[i - 1].url %>');
-                        <%=images[i-1].active=true%>
-                        $("#img-btn-<%= i-1 %>").addClass('active');
+                    $(document).ready(function () {
+                        $('#img-btn-0').addClass('active');
+                        $('.btn-group-vertical').on('click', '#img-btn-<%= i-1 %>', function () {
+                            $('#img-1').attr('src', '<%= images[i - 1].url %>');
+                            $(this).addClass('active').siblings().removeClass('active');
+                        });
                     });
                 </script>
                 <% } %>
@@ -94,12 +94,12 @@
         </div>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-10">
         <img src="<%=images[0].url%>" class="img-responsive img-one" id="img-<%=1%>">
     </div>
-    <div class="col-md-5">
-        <img src="<%=images[1].url%>" class="img-responsive img-two" id="img-<%=2%>">
-    </div>
+    <!--<div class="col-md-5">-->
+        <!--<img src="<%=images[1].url%>" class="img-responsive img-two" id="img-<%=2%>">-->
+    <!--</div>-->
 
 
 

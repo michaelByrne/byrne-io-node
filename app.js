@@ -48,7 +48,8 @@ var server = app.listen(port, function(err){
 app.get('/', function (req, res) {
     res.render('index', {
         title: 'Byrneco. Co. Site V 0.1 Co.',
-        nav: nav
+        nav: nav,
+        stories: []
     });
 });
 

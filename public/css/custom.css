@@ -37,6 +37,7 @@ li {
 
 .btn-secondary.active {
     color: lightgray;
+    background-color: lightslategray;
 }
 
 .editable-click { border-bottom: none; }
