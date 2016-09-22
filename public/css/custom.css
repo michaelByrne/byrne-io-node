@@ -14,12 +14,22 @@ li {
     width: 100%;
 }
 
+
+    .navbar-nav {
+        float: none;
+        margin: 0;
+    }
+
 .blurb {
     color: black;
 }
 
 #push {
     min-height: 200px;
+}
+
+.here {
+    background-color: darkgray;
 }
 
 

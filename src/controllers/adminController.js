@@ -18,9 +18,9 @@ var Story = require('../models/storyModel');
 
 var adminController = function (adminService, nav) {
     var middleware = function (req, res, next) {
-        // if(!req.user){
-        //     res.redirect('/');
-        // }
+        if(!req.user){
+            res.redirect('/');
+        }
         next();
     };
     

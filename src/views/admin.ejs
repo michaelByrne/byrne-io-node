@@ -43,7 +43,7 @@
     <script>$.fn.editable.defaults.mode = 'inline';</script>
     <div class="row"><br>
         <h3>about_you cms v 0.1</h3>
-        <%if (stories.length > 0) { %>
+        <%if (stories) { %>
         <% for(var i = 0;i < stories.length;i++){ %>
         <div class="col-md-3 col-sm-3 dash-panel" draggable="true">
             <p>title: <span id="titles<%=i%>" data-type="text" data-pk="<%=stories[i]._id%>" data-url="/admin/editStory" data-name="title"><%=stories[i].title%></span><br>
