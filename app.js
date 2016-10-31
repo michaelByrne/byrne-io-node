@@ -23,7 +23,7 @@ var nav = [{
     }, {
     Link: '/code', Text: '/projects'
     }, {
-    Link: '/arXfork', Text: "/arXfork"
+    Link: '/queXue', Text: '/queXue'
 }
 ];
 

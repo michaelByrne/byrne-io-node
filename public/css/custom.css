@@ -9,6 +9,10 @@ body {
     color: #959595;
 }
 
+#top-bar {
+    padding-left: 100px;
+}
+
 
 li {
     width: 100%;
